@@ -16,9 +16,12 @@ import {
 
 export const users = pgTable('users', {
   id: uuid('id').primaryKey().defaultRandom(),
+  name: text('name'),
   email: varchar('email', { length: 255 }).notNull().unique(),
-  handle: varchar('handle', { length: 64 }).notNull().unique(),
-  kek: text('kek').notNull(), // base64-encoded KEK raw bytes
+  emailVerified: timestamp('email_verified'),
+  image: text('image'),
+  handle: varchar('handle', { length: 64 }).unique(),
+  kek: text('kek'), // base64-encoded KEK raw bytes; set on first sign-in via createUser event
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
@@ -31,13 +34,13 @@ export const accounts = pgTable('accounts', {
   type: varchar('type', { length: 64 }).notNull(),
   provider: varchar('provider', { length: 64 }).notNull(),
   providerAccountId: varchar('provider_account_id', { length: 255 }).notNull(),
-  refreshToken: varchar('refresh_token', { length: 512 }),
-  accessToken: varchar('access_token', { length: 512 }),
-  expiresAt: integer('expires_at'),
-  tokenType: varchar('token_type', { length: 64 }),
+  refresh_token: varchar('refresh_token', { length: 512 }),
+  access_token: varchar('access_token', { length: 512 }),
+  expires_at: integer('expires_at'),
+  token_type: varchar('token_type', { length: 64 }),
   scope: varchar('scope', { length: 255 }),
-  idToken: varchar('id_token', { length: 2048 }),
-  sessionState: varchar('session_state', { length: 255 }),
+  id_token: varchar('id_token', { length: 2048 }),
+  session_state: varchar('session_state', { length: 255 }),
 });
 
 export const sessions = pgTable('sessions', {

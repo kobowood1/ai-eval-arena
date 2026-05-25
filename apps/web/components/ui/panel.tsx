@@ -1,7 +1,7 @@
-type PanelColor = 'white' | 'pink' | 'cyan' | 'lime';
+type PanelColor = 'default' | 'pink' | 'cyan' | 'lime';
 
 const BORDER: Record<PanelColor, string> = {
-  white: 'border-white/10',
+  default: 'border-white/10',
   pink: 'border-pink-500/30',
   cyan: 'border-cyan-400/30',
   lime: 'border-lime-400/30',
@@ -13,9 +13,9 @@ interface PanelProps {
   className?: string;
 }
 
-export function Panel({ children, color = 'white', className = '' }: PanelProps) {
+export function Panel({ children, color = 'default', className = '' }: PanelProps) {
   return (
-    <div className={`relative bg-zinc-950/80 border ${BORDER[color]} backdrop-blur ${className}`}>
+    <div className={`relative bg-zinc-950/80 border ${BORDER[color]} backdrop-blur p-4 ${className}`}>
       {children}
     </div>
   );
