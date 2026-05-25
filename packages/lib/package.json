@@ -1,0 +1,18 @@
+{
+  "name": "@arena/lib",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./crypto": "./src/crypto.ts",
+    "./elo": "./src/elo.ts",
+    "./types": "./src/types.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
+}
