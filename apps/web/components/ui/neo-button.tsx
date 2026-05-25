@@ -1,7 +1,5 @@
 'use client';
 
-import { type LucideIcon } from 'lucide-react';
-
 type Color = 'pink' | 'cyan' | 'lime' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
 
@@ -23,7 +21,7 @@ interface NeoButtonProps {
   onClick?: () => void;
   color?: Color;
   size?: Size;
-  icon?: LucideIcon;
+  icon?: React.ReactNode;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
@@ -34,7 +32,7 @@ export function NeoButton({
   onClick,
   color = 'pink',
   size = 'md',
-  icon: Icon,
+  icon,
   disabled,
   type = 'button',
   className = '',
@@ -46,7 +44,7 @@ export function NeoButton({
       disabled={disabled}
       className={`${COLOR[color]} ${SIZE[size]} font-code font-bold uppercase tracking-widest border-2 transition-all duration-150 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 clip-corner ${className}`}
     >
-      {Icon && <Icon className="w-4 h-4" />}
+      {icon}
       {children}
     </button>
   );

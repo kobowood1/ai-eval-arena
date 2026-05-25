@@ -130,7 +130,6 @@
 }
 
 /* ── Arena cyberpunk design system ── */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap');
 
 .font-arcade  { font-family: 'Press Start 2P', 'Courier New', monospace; letter-spacing: 0.05em; }
 .font-terminal{ font-family: 'VT323', 'Courier New', monospace; }

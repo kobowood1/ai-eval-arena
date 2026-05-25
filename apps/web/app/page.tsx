@@ -85,7 +85,7 @@ export default function LandingPage() {
             Sign in
           </Link>
           <Link href="/signin">
-            <NeoButton color="pink" size="sm" icon={Zap}>Enter Arena</NeoButton>
+            <NeoButton color="pink" size="sm" icon={<Zap className="w-4 h-4" />}>Enter Arena</NeoButton>
           </Link>
         </div>
       </nav>
@@ -106,9 +106,9 @@ export default function LandingPage() {
         </p>
         <div className="mt-12 flex flex-wrap items-center gap-4">
           <Link href="/signin">
-            <NeoButton color="pink" size="lg" icon={Swords}>Start a Match</NeoButton>
+            <NeoButton color="pink" size="lg" icon={<Swords className="w-4 h-4" />}>Start a Match</NeoButton>
           </Link>
-          <NeoButton color="ghost" size="lg" icon={Eye}>Watch the Demo</NeoButton>
+          <NeoButton color="ghost" size="lg" icon={<Eye className="w-4 h-4" />}>Watch the Demo</NeoButton>
           <div className="font-code text-xs text-white/40 ml-4">
             <span className="text-lime-400">●</span> 1,247 matches today
           </div>

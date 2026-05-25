@@ -3,8 +3,10 @@ import Google from 'next-auth/providers/google';
 import Resend from 'next-auth/providers/resend';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { getDb, schema } from '@arena/db';
+import { authConfig } from './auth.config';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   adapter: DrizzleAdapter(getDb(), {
     usersTable: schema.users,
     accountsTable: schema.accounts,
@@ -21,12 +23,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    session({ session, user }) {
-      session.user.id = user.id;
+    session({ session, token }) {
+      if (token.sub) session.user.id = token.sub;
       return session;
     },
-  },
-  pages: {
-    signIn: '/signin',
   },
 });
